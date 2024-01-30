@@ -12,11 +12,11 @@ const Navbar = () => {
           Welcome Back!
         </div>
       </div>
-      <div className="flex items-center gap-10">
-        <div className="min-w-[400px] relative">
+      <div className="flex items-center gap-6 lg:gap-10">
+        <div className="lg:min-w-[400px] relative">
           <Input
             type="text"
-            placeholder="Search for infrastructure and more"
+            placeholder="Search for infrastructure..."
             className="rounded-lg focus:outline-none text-center w-full bg-gray-100"
           />
         </div>
