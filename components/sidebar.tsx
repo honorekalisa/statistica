@@ -43,7 +43,7 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="border-r text-slate-700 text-sm h-screen p-4 sticky left-0 inset-y-0">
+    <div className="hidden md:block border-r text-slate-700 text-sm h-screen p-4 sticky left-0 inset-y-0">
       <div className="flex justify-start gap-3 mb-6">
         <Link href="/" className="cursor-pointer">
           <p className="text-primary text-left font-bold text-xl">Statistica</p>
