@@ -4,6 +4,7 @@ import "./globals.css";
 import Sidebar from "@/components/sidebar";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, "flex")}>
-        <Sidebar />
-        <div className="w-full">
-          <Navbar />
-          {children}
-        </div>
+        <TooltipProvider delayDuration={400} skipDelayDuration={500}>
+          <Sidebar />
+          <div className="w-full">
+            <Navbar />
+            {children}
+          </div>
+        </TooltipProvider>
       </body>
     </html>
   );

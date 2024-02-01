@@ -6,8 +6,8 @@ import Image from "next/image";
 const Navbar = () => {
   return (
     <div className="bg-white sticky z-10 top-0 flex items-center justify-between px-8 h-[70px] border-b-2">
-      <div>
-        <div className="text-xs text-slate-500">{getGreeting()}</div>
+      <div className="hidden md:block">
+        <div className="hidden lg:block text-xs text-slate-500">{getGreeting()}</div>
         <div className="text-base font-semibold text-slate-600">
           Welcome Back!
         </div>
