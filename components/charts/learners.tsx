@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
+import type { PostgrestError } from "@supabase/supabase-js";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,55 +13,35 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { FaAngleDown } from "react-icons/fa6";
-import { pieChartData } from "@/lib/data";
 import { Check, Info } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { formatData } from "@/lib/utils";
+import { PieChartType } from "@/lib/data";
 
-export default function Learners() {
-  // Constants
-  const COLORS = ["#6425FE", "#00C49F"];
+export default function Learners({
+  data,
+  error,
+}: {
+  data: PieChartData | null;
+  error?: PostgrestError | null;
+}) {
+  const formattedData: PieChartType[] = formatData(data);
 
-  const recentYear = pieChartData[pieChartData.length - 1].year;
+  const recentYear = formattedData[formattedData.length - 1]?.year;
+
   const [selectedYear, setSelectedYear] = useState(recentYear);
-  const filteredData = pieChartData.find(
+  const filteredData = formattedData.find(
     (dataItem) => dataItem.year === selectedYear
   );
+  const COLORS = ["#6425FE", "#00C49F"];
 
-  // Function to render customized labels
-  const renderCustomizedLabel = ({
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    percent,
-    index,
-  }: {
-    cx: number;
-    cy: number;
-    midAngle: number;
-    innerRadius: number;
-    outerRadius: number;
-    percent: number;
-    index: number;
-  }) => {
-    const RADIAN = Math.PI / 180;
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
+  if (error) {
     return (
-      <text
-        x={x}
-        y={y}
-        fill="white"
-        textAnchor={x > cx ? "start" : "end"}
-        dominantBaseline="central"
-      >
-        {`${(percent * 100).toFixed(0)}%`}
-      </text>
+      <div className="rounded-lg bg-white px-4 py-4 mb-2 w-full flex items-center justify-center">
+        <p className="text-red-500 text-sm font-semibold">{error.message}</p>
+      </div>
     );
-  };
+  }
 
   return (
     <div className="rounded-lg bg-white px-4 py-4 mb-2 w-full">
@@ -70,7 +51,7 @@ export default function Learners() {
             Education
             <Tooltip>
               <TooltipTrigger>
-              <Info className="h-3 w-3 text-gray-500" />
+                <Info className="h-3 w-3 text-gray-500" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>Gender representation in schools</p>
@@ -91,7 +72,7 @@ export default function Learners() {
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Filter by year</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            {pieChartData.map((yearItem, index) => (
+            {formattedData.map((yearItem, index) => (
               <DropdownMenuItem
                 onClick={() => setSelectedYear(yearItem.year)}
                 key={index}
@@ -105,7 +86,7 @@ export default function Learners() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="flex flex-col md:flex-row items-center">
+      <div className="flex flex-col xl:flex-row items-center">
         {filteredData && (
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>

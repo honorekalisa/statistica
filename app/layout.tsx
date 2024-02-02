@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "flex")}>
+      <body className={cn(inter.className, "flex max-w-[1440px]")}>
         <TooltipProvider delayDuration={400} skipDelayDuration={500}>
           <Sidebar />
           <div className="w-full">

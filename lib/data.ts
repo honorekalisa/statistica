@@ -63,3 +63,8 @@ export const pieChartData = [
     ],
   },
 ];
+
+export interface PieChartType {
+  year: string;
+  data: { name: string; value: number }[];
+};
