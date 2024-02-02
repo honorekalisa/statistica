@@ -1,8 +1,33 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+import { PieChartType } from "./data";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
+}
+
+export function formatData(inputArray: PieChartData | null) {
+  const formattedData: PieChartType[] = [];
+
+  // Create a map to group by year
+  const map = new Map();
+
+  inputArray?.forEach((item) => {
+    if (!map.has(item.year)) {
+      map.set(item.year, []);
+    }
+    map.get(item.year).push({ name: item.gender, value: item.value });
+  });
+
+  // Convert the map into the required format
+  map.forEach((value, key) => {
+    formattedData.push({
+      year: key,
+      data: value,
+    });
+  });
+
+  return formattedData;
 }
 
 export function getGreeting() {
