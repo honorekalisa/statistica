@@ -1,0 +1,2 @@
+# ignore the generated database types file
+/lib/database.types.ts
