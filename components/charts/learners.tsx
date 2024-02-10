@@ -34,7 +34,6 @@ export default function Learners({
     (dataItem) => dataItem.year === selectedYear
   );
   const COLORS = ["#6425FE", "#00C49F"];
-
   if (error) {
     return (
       <div className="rounded-lg bg-white px-4 py-4 mb-2 w-full flex items-center justify-center">
@@ -45,7 +44,7 @@ export default function Learners({
 
   return (
     <div className="rounded-lg bg-white px-4 py-4 mb-2 w-full">
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between">
         <div className="space-y-1">
           <div className="text-sm font-medium flex items-center gap-1">
             Education
@@ -98,8 +97,8 @@ export default function Learners({
                 innerRadius={60}
                 outerRadius={80}
                 fill="#8884d8"
-                dataKey="value"
-                nameKey="name"
+                dataKey="percentage"
+                nameKey="gender"
               >
                 {filteredData.data.map((_, index) => (
                   <Cell
@@ -111,25 +110,35 @@ export default function Learners({
             </PieChart>
           </ResponsiveContainer>
         )}
-        <div className="flex flex-col items-center gap-6 mt-4 w-full">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="rounded-full bg-[#6425FE] h-3 w-3" />
-              <p className="text-sm font-medium">Female</p>
-            </div>
-            <p className="text-sm font-semibold">
-              {filteredData?.data[0].value}%
-            </p>
+        <div className="grid grid-cols-3 gap-y-4 w-full mt-4 md:mt-0">
+          <div className="flex items-center gap-4">
+            <div className="rounded-full bg-[#6425FE] h-3 w-3" />
+            <p className="text-sm ">Female</p>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="rounded-full bg-[#00C49F] h-3 w-3" />
-              <p className="text-sm font-medium">Male</p>
-            </div>
-            <p className="text-sm font-semibold mr-auto">
-              {filteredData?.data[1].value}%
-            </p>
+          <p className="text-sm font-semibold text-center">
+            {filteredData?.data[0].percentage}%
+          </p>
+          <p className="text-sm font-semibold text-right">
+            {filteredData?.data[0].value.toLocaleString()}
+          </p>
+          <div className="flex items-center gap-4">
+            <div className="rounded-full bg-[#00C49F] h-3 w-3" />
+            <p className="text-sm">Male</p>
           </div>
+          <p className="text-sm font-semibold text-center">
+            {filteredData?.data[1].percentage}%
+          </p>
+          <p className="text-sm font-semibold text-right">
+            {filteredData?.data[1].value.toLocaleString()}
+          </p>
+          <div className="flex items-center gap-4 justify-center col-span-3">
+          <p className="text-sm">Total</p>
+          <p className="text-sm font-semibold text-center">
+            {filteredData?.data
+              .reduce((sum, item) => sum + item.value, 0)
+              .toLocaleString()}
+          </p>
+        </div>
         </div>
       </div>
     </div>

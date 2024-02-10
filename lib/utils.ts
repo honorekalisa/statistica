@@ -16,7 +16,13 @@ export function formatData(inputArray: PieChartData | null) {
     if (!map.has(item.year)) {
       map.set(item.year, []);
     }
-    map.get(item.year).push({ name: item.gender, value: item.value });
+    map
+      .get(item.year)
+      .push({
+        gender: item.gender,
+        percentage: item.percentage,
+        value: item.value,
+      });
   });
 
   // Convert the map into the required format

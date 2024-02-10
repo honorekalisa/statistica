@@ -66,5 +66,5 @@ export const pieChartData = [
 
 export interface PieChartType {
   year: string;
-  data: { name: string; value: number }[];
-};
+  data: { gender: string; percentage: number; value: number }[];
+}
