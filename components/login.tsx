@@ -50,7 +50,7 @@ export function LoginDialog() {
         </Button>
         <DialogFooter>
           <div className="text-xs">
-            By creating an account, you agree to our Terms of Service and
+            By signing in to Statistica, you agree to our Terms of Service and
             Privacy Policy.
           </div>
         </DialogFooter>

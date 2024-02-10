@@ -13,10 +13,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { FaAngleDown } from "react-icons/fa6";
-import { Check, Info } from "lucide-react";
+import { Check, HelpCircle } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { formatData } from "@/lib/utils";
 import { PieChartType } from "@/lib/data";
+import ErrorAlert from "@/components/ui/error";
 
 export default function Learners({
   data,
@@ -35,25 +36,21 @@ export default function Learners({
   );
   const COLORS = ["#6425FE", "#00C49F"];
   if (error) {
-    return (
-      <div className="rounded-lg bg-white px-4 py-4 mb-2 w-full flex items-center justify-center">
-        <p className="text-red-500 text-sm font-semibold">{error.message}</p>
-      </div>
-    );
+    return <ErrorAlert message={error.message} />;
   }
 
   return (
-    <div className="rounded-lg bg-white px-4 py-4 mb-2 w-full">
+    <div className="rounded-lg bg-white px-4 py-4 mb-2 w-full h-full">
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <div className="text-sm font-medium flex items-center gap-1">
             Education
             <Tooltip>
               <TooltipTrigger>
-                <Info className="h-3 w-3 text-gray-500" />
+                <HelpCircle className="h-3 w-3 text-gray-500" />
               </TooltipTrigger>
               <TooltipContent>
-                <p>Gender representation in schools</p>
+                <p className="text-sm">Gender representation in schools</p>
               </TooltipContent>
             </Tooltip>
           </div>
@@ -132,13 +129,13 @@ export default function Learners({
             {filteredData?.data[1].value.toLocaleString()}
           </p>
           <div className="flex items-center gap-4 justify-center col-span-3">
-          <p className="text-sm">Total</p>
-          <p className="text-sm font-semibold text-center">
-            {filteredData?.data
-              .reduce((sum, item) => sum + item.value, 0)
-              .toLocaleString()}
-          </p>
-        </div>
+            <p className="text-sm">Total</p>
+            <p className="text-sm font-semibold text-center">
+              {filteredData?.data
+                .reduce((sum, item) => sum + item.value, 0)
+                .toLocaleString()}
+            </p>
+          </div>
         </div>
       </div>
     </div>

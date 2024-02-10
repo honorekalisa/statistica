@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 const TopFigures = () => {
   return (
-      <div className="bg-white w-full p-4 rounded-md flex flex-col gap-6 items-start">
+      <div className="bg-white w-full h-full p-4 rounded-md flex flex-col gap-6 items-start">
         <div className="space-y-2 w-full">
           <p className="text-sm font-medium">National income (billions)</p>
           <div className="flex items-center justify-between gap-3">
