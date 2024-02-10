@@ -1,8 +1,8 @@
-import { Input } from "@/components/ui/input";
-import Notifications from "@/components/notifications";
-import { getGreeting } from "@/lib/utils";
-import Image from "next/image";
 import { Menu } from "lucide-react";
+import { getGreeting } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+import AuthButton from "@/components/ui/auth-button";
+import Notifications from "@/components/notifications";
 
 const Navbar = () => {
   return (
@@ -11,21 +11,21 @@ const Navbar = () => {
         <div className="hidden lg:block text-xs text-slate-500">
           {getGreeting()}
         </div>
-        <div className="text-base font-semibold text-slate-600">
+        <div className="text-sm xl:text-base font-semibold text-slate-600">
           Welcome Back!
         </div>
       </div>
       <div className="flex items-center justify-between w-full md:w-auto gap-6 lg:gap-8">
-      <Menu className="text-primary md:hidden" />
-        <div className="hidden md:block lg:min-w-[400px]">
+        <Menu className="text-primary md:hidden" />
+        {/* <div className="hidden lg:block lg:min-w-[400px]">
           <Input
             type="text"
             placeholder="Search for infrastructure..."
             className="rounded-lg focus:outline-none text-center w-full bg-gray-100"
           />
-        </div>
+        </div> */}
         <Notifications />
-        <Image src="/assets/profile.png" alt="profile" width={40} height={40} />
+        <AuthButton />
       </div>
     </div>
   );

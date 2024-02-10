@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  AreaChart,
-  LogOut,
-} from "lucide-react";
+import { AreaChart, LogOut } from "lucide-react";
 import { MdOutlineElectricBolt, MdSpaceDashboard } from "react-icons/md";
 import { FaTowerBroadcast } from "react-icons/fa6";
 import { IoSchoolSharp } from "react-icons/io5";
@@ -57,7 +54,7 @@ const Sidebar = () => {
             key={link.text}
             className={cn(
               "flex items-center gap-4 rounded-md hover:bg-primary/10 hover:text-primary py-3 px-6 cursor-pointer w-full",
-              pathname === link.link && "bg-primary/10 text-primary"
+              pathname === link.link && "bg-primary/10 shadow text-primary"
             )}
           >
             {link.icon}
@@ -71,9 +68,9 @@ const Sidebar = () => {
             </span>
           </Link>
         ))}
-        <div className="pt-8">
-          <ThoughtsTip />
-        </div>
+      </div>
+      <div className="pt-20">
+        <ThoughtsTip />
       </div>
       <div className="absolute bottom-2">
         <button
