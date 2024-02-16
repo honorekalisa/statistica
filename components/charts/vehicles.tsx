@@ -1,6 +1,6 @@
 "use client";
 import ErrorAlert from "@/components/ui/error";
-import { CustomTooltip } from "@/components/ui/custom-tooltip";
+import { VehiclesTooltip } from "@/components/ui/vehicles-tooltip";
 import {
   AreaChart,
   Line,
@@ -25,7 +25,9 @@ export default function RegisteredVehicles({
   }
   return (
     <div className="bg-white p-4 rounded-md w-full">
-      <h4 className="mb-4 text-sm font-medium">Registered Vehicles in Rwanda</h4>
+      <h4 className="mb-4 text-sm font-medium">
+        Registered Vehicles in Rwanda
+      </h4>
 
       {data ? (
         <>
@@ -52,7 +54,7 @@ export default function RegisteredVehicles({
               <XAxis dataKey="year" tickLine={false} fontSize={12} />
               <YAxis dataKey={"value"} tickLine={false} fontSize={12} />
               {/* @ts-ignore */}
-              <Tooltip content={<CustomTooltip />} />
+              <Tooltip content={<VehiclesTooltip />} />
               <Line
                 type="monotone"
                 dataKey="value"
@@ -69,7 +71,9 @@ export default function RegisteredVehicles({
               />
             </AreaChart>
           </ResponsiveContainer>
-          <p className="text-sm text-gray-700 text-center mt-2">Hover over the chart to view the actual figure</p>
+          <p className="text-sm text-gray-700 text-center mt-2">
+            Hover over the chart to view the actual figure
+          </p>
           <p className="text-xs text-gray-700 text-center mt-1">Source: RRA</p>
         </>
       ) : (

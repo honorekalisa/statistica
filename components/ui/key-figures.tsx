@@ -6,10 +6,10 @@ import { IoIosPeople } from "react-icons/io";
 
 const KeyFigures = () => {
   return (
-    <div>
+    <div className="bg-white p-3 rounded-md">
       <p className="text-sm font-medium mb-2">Key Figures</p>
-      <div className="bg-white rounded-md p-3 grid md:grid-cols-2 xl:grid-cols-4 place-content-center-center gap-3">
-        <div className="flex items-start justify-between gap-10 bg-secondary rounded-md py-2 px-4">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 place-content-center-center gap-3">
+        <div className="flex items-start justify-between gap-10 bg-secondary/50 rounded-md py-2 px-4">
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-gray-700">
               <RiHandCoinFill className="w-5 h-5" />
@@ -37,7 +37,7 @@ const KeyFigures = () => {
             />
           </div>
         </div>
-        <div className="flex items-start justify-between gap-10 bg-[#B79BFF] text-gray-100 rounded-md py-2 px-4">
+        <div className="flex items-start justify-between gap-10 bg-primary/50 text-gray-100 rounded-md py-2 px-4">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <IoIosPeople className="w-5 h-5" />
