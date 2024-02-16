@@ -33,7 +33,7 @@ const TopSubscribers = ({
   const [selectedYear, setSelectedYear] = useState(2022);
   const uniqueYears = Array.from(
     new Set(data?.map((dataItem) => dataItem.year))
-  ).toSorted();
+  ).sort();
 
   const filteredData = data?.filter(
     (dataItem) =>
