@@ -24,7 +24,7 @@ const RoadsClassification = ({
     return <ErrorAlert message={error.message} />;
   }
   return (
-    <div className="p-4 bg-white rounded-md w-full">
+    <div className="p-4 bg-white rounded-lg w-full">
       <h4 className="mb-4 text-sm font-medium">Classification of Roads (km)</h4>
       <ResponsiveContainer width="100%" height={250}>
         <BarChart

@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Check } from "lucide-react";
 import { FaAngleDown } from "react-icons/fa6";
+import Image from "next/image";
 
 const TopSubscribers = ({
   data,
@@ -43,8 +44,9 @@ const TopSubscribers = ({
   if (error) {
     return <ErrorAlert message={error.message} />;
   }
+
   return (
-    <div className="rounded-md p-4 w-full bg-white">
+    <div className="rounded-lg p-4 w-full bg-white">
       <div className="flex items-center justify-between mb-2">
         <h4 className="text-sm font-medium">
           Top operators by internet subscribers
@@ -78,23 +80,31 @@ const TopSubscribers = ({
         <TableHeader className="bg-slate-50">
           <TableRow className="w-full">
             <TableHead className="w-[100px]">#</TableHead>
-            <TableHead>Operator</TableHead>
-            <TableHead className="">Subscribers</TableHead>
+            <TableHead className="text-center">Operator</TableHead>
+            <TableHead>Subscribers</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredData?.slice(0, 4)?.map((subscriber, index) => (
+          {filteredData?.slice(0, 3)?.map((subscriber, index) => (
             <TableRow key={subscriber.id}>
               <TableCell>{index + 1}</TableCell>
-              <TableCell className="font-medium">
-                {subscriber.operator}
+              <TableCell className="font-medium flex lg:justify-center items-center gap-6">
+                <Image
+                  src={subscriber.profile_picture || "/assets/operator.png"}
+                  alt={subscriber.operator}
+                  width={40}
+                  height={40}
+                  unoptimized
+                  className="hidden sm:block rounded-full object-cover object-center"
+                />
+                <p>{subscriber.operator}</p>
               </TableCell>
               <TableCell>{subscriber.subscribers?.toLocaleString()}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <p className="text-xs mt-4 text-center">Source: RURA</p>
+      <p className="text-xs mt-2 text-center">Source: RURA</p>
     </div>
   );
 };

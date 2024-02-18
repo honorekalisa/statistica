@@ -40,7 +40,7 @@ export default function Learners({
   }
 
   return (
-    <div className="rounded-lg px-4 py-4 mb-2 w-full h-full">
+    <div className="rounded-lg px-4 py-4 mb-2 w-full h-full bg-white">
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <div className="text-sm font-medium flex items-center gap-1">
@@ -138,7 +138,7 @@ export default function Learners({
           </div>
         </div>
       </div>
-        <p className="text-xs text-center">Source: School census, Ministry of Education</p>
+        <p className="text-xs text-center mt-4">Source: School census, Ministry of Education</p>
     </div>
   );
 }
