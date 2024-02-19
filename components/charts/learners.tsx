@@ -40,7 +40,7 @@ export default function Learners({
   }
 
   return (
-    <div className="rounded-lg px-4 py-4 mb-2 w-full h-full bg-white">
+    <div className="rounded-lg px-4 py-4 w-full h-full bg-white">
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <div className="text-sm font-medium flex items-center gap-1">
@@ -82,7 +82,7 @@ export default function Learners({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="flex flex-col xl:flex-row items-center">
+      <div className="flex flex-col items-center">
         {filteredData && (
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
@@ -107,7 +107,7 @@ export default function Learners({
             </PieChart>
           </ResponsiveContainer>
         )}
-        <div className="grid grid-cols-3 gap-y-4 w-full mt-4 md:mt-0">
+        <div className="grid grid-cols-3 gap-4 w-fit mt-4 md:mt-0">
           <div className="flex items-center gap-4">
             <div className="rounded-full bg-[#6425FE] h-3 w-3" />
             <p className="text-sm ">Female</p>
@@ -128,14 +128,14 @@ export default function Learners({
           <p className="text-sm font-semibold text-right">
             {filteredData?.data[1].value.toLocaleString()}
           </p>
-          <div className="flex items-center gap-4 justify-center col-span-3">
+          {/* <div className="flex items-center gap-4 justify-center col-span-3">
             <p className="text-sm">Total</p>
             <p className="text-sm font-semibold text-center">
               {filteredData?.data
                 .reduce((sum, item) => sum + item.value, 0)
                 .toLocaleString()}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
         <p className="text-xs text-center mt-4">Source: School census, Ministry of Education</p>

@@ -79,8 +79,8 @@ const TopSubscribers = ({
       <Table>
         <TableHeader className="bg-slate-50">
           <TableRow className="w-full">
-            <TableHead className="w-[100px]">#</TableHead>
-            <TableHead className="text-center">Operator</TableHead>
+            <TableHead className="w-[80px]">#</TableHead>
+            <TableHead className="md:text-center">Operator</TableHead>
             <TableHead>Subscribers</TableHead>
           </TableRow>
         </TableHeader>
@@ -88,14 +88,14 @@ const TopSubscribers = ({
           {filteredData?.slice(0, 3)?.map((subscriber, index) => (
             <TableRow key={subscriber.id}>
               <TableCell>{index + 1}</TableCell>
-              <TableCell className="font-medium flex lg:justify-center items-center gap-6">
+              <TableCell className="font-medium flex items-center gap-6">
                 <Image
                   src={subscriber.profile_picture || "/assets/operator.png"}
                   alt={subscriber.operator}
                   width={40}
                   height={40}
                   unoptimized
-                  className="hidden sm:block rounded-full object-cover object-center"
+                  className="hidden sm:block rounded-full object-contain object-center"
                 />
                 <p>{subscriber.operator}</p>
               </TableCell>
