@@ -80,7 +80,7 @@ const TopSubscribers = ({
         <TableHeader className="bg-slate-50">
           <TableRow className="w-full">
             <TableHead className="w-[80px]">#</TableHead>
-            <TableHead className="md:text-center">Operator</TableHead>
+            <TableHead>Operator</TableHead>
             <TableHead>Subscribers</TableHead>
           </TableRow>
         </TableHeader>
