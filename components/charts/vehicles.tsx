@@ -12,6 +12,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import type { PostgrestError } from "@supabase/supabase-js";
+import Export from "../export";
 
 export default function RegisteredVehicles({
   data,
@@ -25,9 +26,12 @@ export default function RegisteredVehicles({
   }
   return (
     <div className="bg-white p-4 rounded-md w-full">
-      <h4 className="mb-4 text-sm font-medium">
-        Registered Vehicles in Rwanda
-      </h4>
+      <div className="flex flex-col md:flex-row gap-2 items-center justify-between mb-4">
+        <h4 className="text-sm font-medium">
+          Registered Vehicles in Rwanda
+        </h4>
+        <Export data={data} filename={"registered-vehicles.csv"} />
+      </div>
 
       {data ? (
         <>

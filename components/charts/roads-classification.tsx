@@ -12,6 +12,9 @@ import {
 } from "recharts";
 import ErrorAlert from "@/components/ui/error";
 import { RoadsTooltip } from "@/components/ui/roads-tooltip";
+import { Button } from "@/components/ui/button";
+import { CiExport } from "react-icons/ci";
+import Export from "../export";
 
 const RoadsClassification = ({
   data,
@@ -25,7 +28,10 @@ const RoadsClassification = ({
   }
   return (
     <div className="p-4 bg-white rounded-lg w-full">
-      <h4 className="mb-4 text-sm font-medium">Classification of Roads (km)</h4>
+      <div className="flex items-center justify-between mb-2">
+        <h4 className="text-sm font-medium">Classification of Roads (km)</h4>
+        <Export data={data} filename="classification_of_roads_report" />
+      </div>
       <ResponsiveContainer width="100%" height={250}>
         <BarChart
           width={500}

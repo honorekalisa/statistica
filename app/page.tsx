@@ -36,6 +36,7 @@ export default async function Home() {
         <TopSubscribers
           data={internet_subscribers}
           error={internet_subscribers_error}
+          length={3}
         />
       </div>
     </div>

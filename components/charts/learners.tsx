@@ -18,6 +18,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { formatData } from "@/lib/utils";
 import { PieChartType } from "@/lib/data";
 import ErrorAlert from "@/components/ui/error";
+import Export from "../export";
 
 export default function Learners({
   data,
@@ -41,7 +42,7 @@ export default function Learners({
 
   return (
     <div className="rounded-lg px-4 py-4 w-full h-full bg-white">
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col md:flex-row gap-2 items-center justify-between">
         <div className="space-y-1">
           <div className="text-sm font-medium flex items-center gap-1">
             Education
@@ -55,32 +56,35 @@ export default function Learners({
             </Tooltip>
           </div>
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              className="rounded-lg flex items-center gap-2"
-            >
-              {selectedYear}
-              <FaAngleDown />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Filter by year</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            {formattedData.map((yearItem, index) => (
-              <DropdownMenuItem
-                onClick={() => setSelectedYear(yearItem.year)}
-                key={index}
+        <div className="flex items-center gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="rounded-lg flex items-center gap-2"
               >
-                {yearItem.year}
-                {selectedYear === yearItem.year && (
-                  <Check className="ml-auto h-4 w-4" />
-                )}
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+                {selectedYear}
+                <FaAngleDown />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Filter by year</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {formattedData.map((yearItem, index) => (
+                <DropdownMenuItem
+                  onClick={() => setSelectedYear(yearItem.year)}
+                  key={index}
+                >
+                  {yearItem.year}
+                  {selectedYear === yearItem.year && (
+                    <Check className="ml-auto h-4 w-4" />
+                  )}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Export data={data} filename="gender-representation-in-schools" />
+        </div>
       </div>
       <div className="flex flex-col items-center">
         {filteredData && (
@@ -138,7 +142,9 @@ export default function Learners({
           </div> */}
         </div>
       </div>
-        <p className="text-xs text-center mt-4">Source: School census, Ministry of Education</p>
+      <p className="text-xs text-center mt-4">
+        Source: School census, Ministry of Education
+      </p>
     </div>
   );
 }

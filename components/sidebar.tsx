@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AreaChart, LogOut } from "lucide-react";
-import { MdOutlineElectricBolt, MdSpaceDashboard } from "react-icons/md";
+import { MdSpaceDashboard } from "react-icons/md";
 import { FaTowerBroadcast } from "react-icons/fa6";
 import { IoSchoolSharp } from "react-icons/io5";
 import { FaRoad } from "react-icons/fa";
@@ -33,17 +33,15 @@ const Sidebar = () => {
       icon: <FaTowerBroadcast className="h-4 w-4" />,
       text: "Communication",
     },
-    {
-      link: "/energy",
-      icon: <MdOutlineElectricBolt className="h-4 w-4" />,
-      text: "Water & Energy",
-    },
   ];
+
   return (
-    <div className="hidden md:block border-r text-slate-700 text-sm h-screen p-4 sticky left-0 inset-y-0">
+    <div className="hidden lg:block border-r text-slate-700 text-sm h-screen p-4 sticky left-0 inset-y-0">
       <div className="flex justify-start gap-3 mb-6">
         <Link href="/" className="cursor-pointer">
-          <p className="text-primary text-left font-bold text-xl">Statistica</p>
+          <p className={cn("text-primary text-left font-bold text-xl")}>
+            Statistica
+          </p>
         </Link>
         <AreaChart className="text-primary" />
       </div>
