@@ -4,7 +4,17 @@ Statistica serves as a central repository for Rwanda's infrastructure data, curr
 
 ## Getting Started
 
-First, run the development server:
+First, install packages:
+
+```bash
+npm install
+# or
+yarn add
+# or
+pnpm add
+```
+
+Next, start the development server:
 
 ```bash
 npm run dev
